@@ -1,0 +1,43 @@
+////
+/// Style
+/// @group theme-functions
+/// @author Benjamin Fleming
+////
+
+
+// Public
+// ------
+
+/// Retrieves the color from the color map setting.
+/// @require {variable} sl-colors
+/// @param {String | Color} $name - The name of the color
+/// @param {Number} $alpha - The transparency of the color as a decimal
+/// @return {Color} A CSS color
+@function sl-color($name, $alpha: auto) {
+
+	@if map-has-key($sl-colors, $name) {
+		@return sl-color( map-get($sl-colors, $name), $alpha);
+
+	} @else if type-of($name) != 'color' {
+		@error '#{inspect($name)} is not a valid color input';
+	}
+
+	@return if($alpha == auto, $name, rgba($name, $alpha));
+}
+
+/// Retrieves the font from the font map setting. Essentially a wrapper for map-get()
+/// @require {variable} sl-fonts
+/// @param {String} $name - The name of the font
+/// @return {String | List} The font or list of fonts and font types
+@function sl-font($name) {
+	@return map-get($sl-fonts, $name);
+}
+
+/// Retrieves the font weight from the weight map setting.
+/// @require {variable} sl-font-weights
+/// @param {String} $name - The name of the font
+/// @param {String} $weight - The name of the font weight
+/// @return {Number | String} The font weight
+@function sl-font-weight($name, $weight) {
+	@return map-get( map-get($sl-font-weights, $name), $weight);
+}

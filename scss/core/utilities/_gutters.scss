@@ -1,0 +1,77 @@
+////
+/// Gutters
+/// @group core-utilities
+/// @author Benjamin Fleming
+////
+
+
+// Settings
+// --------
+
+/// Controls whether styles in this file (gutters) are generated.
+/// @type Boolean
+$sl-generate-gutters: $sl-generate !default;
+
+
+// Asserts
+// -------
+
+@include sl-assert($sl-generate-gutters, 'bool');
+
+
+// Styles
+// ------
+
+@if $sl-generate-gutters {
+
+	@each $property in 'margin', 'padding' {
+
+		@each $gutter-name, $gutter-value in map-merge($sl-gutters, ('none': 0)) {
+
+			@include sl-utility('t-' + $property + '-' + $gutter-name) { #{$property}-top: $gutter-value !important; }
+			@include sl-utility('b-' + $property + '-' + $gutter-name) { #{$property}-bottom: $gutter-value !important; }
+			@include sl-utility('l-' + $property + '-' + $gutter-name) { #{$property}-left: $gutter-value !important; }
+			@include sl-utility('r-' + $property + '-' + $gutter-name) { #{$property}-right: $gutter-value !important; }
+
+			@include sl-utility('h-' + $property + '-' + $gutter-name) {
+				#{$property}-left: $gutter-value !important;
+				#{$property}-right: $gutter-value !important;
+			}
+
+			@include sl-utility('v-' + $property + '-' + $gutter-name) {
+				#{$property}-top: $gutter-value !important;
+				#{$property}-bottom: $gutter-value !important;
+			}
+
+			@include sl-utility($property + '-' + $gutter-name) {
+				#{$property}: $gutter-value !important;
+			}
+		}
+	}
+
+	@include sl-utility('t-trim') {
+		> :first-child { margin-top: 0 !important; }
+	}
+
+	@include sl-utility('b-trim') {
+		> :last-child { margin-bottom: 0 !important; }
+	}
+
+	@include sl-utility('l-trim') {
+		> :first-child { margin-left: 0 !important; }
+	}
+
+	@include sl-utility('r-trim') {
+		> :last-child { margin-right: 0 !important; }
+	}
+
+	@include sl-utility('h-trim') {
+		> :first-child { margin-left: 0 !important; }
+		> :last-child { margin-right: 0 !important; }
+	}
+
+	@include sl-utility('v-trim') {
+		> :first-child { margin-top: 0 !important; }
+		> :last-child { margin-bottom: 0 !important; }
+	}
+}

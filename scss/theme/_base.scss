@@ -1,0 +1,47 @@
+////
+/// Base styles
+/// @group theme
+/// @author Benjamin Fleming
+////
+
+
+// Settings
+// --------
+
+/// Controls whether styles in this file (base) are generated.
+/// @type Boolean
+$sl-generate-base-theme: $sl-generate-base !default;
+
+
+// Asserts
+// -------
+
+@include sl-assert($sl-generate-base-theme, 'bool');
+
+
+// Styles
+// ------
+
+@if $sl-generate-base-theme {
+
+	html,
+	button,
+	input,
+	select,
+	textarea {
+		/// Fix legibility for custom fonts
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+	}
+
+	body {
+		/// For good measure - sometimes things like negative margins can trigger horizontal scrolling
+		overflow-x: hidden;
+	}
+
+	:focus:hover {
+		/// Remove that annoying outline when you've clicked an element
+		outline: none;
+	}
+}

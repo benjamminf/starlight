@@ -1,0 +1,64 @@
+////
+/// Content utilities
+/// @group theme-utilities
+/// @author Benjamin Fleming
+////
+
+
+// Settings
+// --------
+
+/// Controls whether styles in this file (content) are generated.
+/// @type Boolean
+$sl-generate-content: $sl-generate !default;
+
+$sl-quotes-double: '\201c' '\201d' !default;
+$sl-quotes-single: '\2018' '\2019' !default;
+$sl-quotes-double-angle: '\00ab' '\00bb' !default;
+$sl-quotes-single-angle: '\2039' '\203a' !default;
+
+
+// Asserts
+// -------
+
+@include sl-assert($sl-generate-content, 'bool');
+
+
+// Mixins
+// ------
+
+@mixin sl-quotes($outer: $sl-quotes-double, $inner: $sl-quotes-single) {
+	quotes: $outer $inner;
+
+	&:before {
+		content: open-quote;
+	}
+
+	&:after {
+		content: close-quote;
+	}
+
+	&:before,
+	&:after {
+		@content;
+	}
+}
+
+
+// Styles
+// ------
+
+@if $sl-generate-content {
+
+	@include sl-utility('unlist') {
+		padding: 0;
+
+		> li {
+			list-style: none;
+		}
+	}
+
+	@include sl-utility('quotes') {
+		@include sl-quotes;
+	}
+}
