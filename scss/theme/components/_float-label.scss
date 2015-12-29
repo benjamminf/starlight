@@ -87,35 +87,35 @@
 	}
 
 	#{$label-selector} {
+		pointer-events: none;
 		position: absolute;
-		font-size: $label-font-size;
 		top: $label-top;
 		left: $label-left;
 		right: $label-right;
-		line-height: 1 !important;
-		pointer-events: none;
 		overflow: hidden;
-		text-overflow: ellipsis;
+		font-size: $label-font-size;
+		line-height: 1 !important;
 		white-space: nowrap;
+		text-overflow: ellipsis;
 		transform-origin: left center;
 	}
 
 	@if $secondary-label {
 
 		#{$secondary-label-selector} {
-			opacity: 0;
-			display: block;
 			content: attr(#{unquote($secondary-label)});
+			pointer-events: none;
 			position: absolute;
-			font-size: $small-label-font-size;
 			top: $s-label-top;
 			left: $s-label-left;
 			right: $s-label-right;
-			line-height: 1 !important;
-			pointer-events: none;
+			display: block;
 			overflow: hidden;
-			text-overflow: ellipsis;
+			font-size: $small-label-font-size;
+			line-height: 1 !important;
 			white-space: nowrap;
+			text-overflow: ellipsis;
+			opacity: 0;
 			transform-origin: left center;
 		}
 	}
@@ -141,10 +141,10 @@
 			@include sl-featureless('transform') {
 
 				#{$label-selector} {
-					font-size: $small-label-font-size;
 					top: $s-label-top;
 					left: $s-label-left;
 					right: $s-label-right;
+					font-size: $small-label-font-size;
 					transform: none; // Just to be sure
 				}
 			}
