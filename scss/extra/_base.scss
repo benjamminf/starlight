@@ -39,9 +39,4 @@ $sl-generate-base-theme: $sl-generate-base !default;
 		/// For good measure - sometimes things like negative margins can trigger horizontal scrolling
 		overflow-x: hidden;
 	}
-
-	:focus:hover {
-		/// Remove that annoying outline when you've clicked an element
-		outline: none;
-	}
 }
