@@ -1,6 +1,6 @@
 ////
-/// Removes prefixes from selected mixins, functions and placeholders. Variables cannot be unprefixed as they must be
-/// able to handle being changed.
+/// Removes prefixes from selected mixins and functions. Variables cannot be unprefixed as they must be able to handle
+/// being changed.
 /// @group core
 /// @author Benjamin Fleming
 ////
@@ -201,4 +201,334 @@
 /// @return {Number | List | Map} The converted number (or list or map of numbers) as a decimal
 @function decimal($value, $factor: null) {
 	@return sl-convert($value, '', $factor);
+}
+
+
+// Components / Button
+// -------------------
+
+/// A mixin for styling buttons. Just an unprefixed wrapper for the `sl-button()` mixin.
+/// @require {mixin} sl-button
+/// @param {Number} $font-size [1em]
+/// @param {Number | List} $padding [0]
+/// @param {Number | List} $border-width [0]
+/// @param {Number} $line-height [1]
+/// @param {Boolean} $multiline [false]
+/// @output
+@mixin button(
+	$font-size: 1em,
+	$padding: 0,
+	$border-width: 0,
+	$line-height: 1,
+	$multiline: false
+) {
+	@include sl-button(
+		$font-size,
+		$padding,
+		$border-width,
+		$line-height,
+		$multiline
+	);
+}
+
+
+// Components / Field
+// ------------------
+
+/// A mixin for styling input, select and textarea elements. Just an unprefixed wrapper for the `sl-field()` mixin.
+/// @require {mixin} sl-field
+/// @param {Number} $font-size [1em]
+/// @param {Number | List} $padding [0]
+/// @param {Number | List} $border-width [0]
+/// @param {Number} $line-height [1]
+/// @output
+@mixin field(
+	$font-size: 1em,
+	$padding: 0,
+	$border-width: 0,
+	$line-height: 1
+) {
+	@include sl-field(
+		$font-size,
+		$padding,
+		$border-width,
+		$line-height
+	);
+}
+
+
+// Components / Icon
+// -----------------
+
+/// Turns an element into an icon module. Just an unprefixed wrapper for the `sl-icon()` mixin.
+/// @require {variable} sl-icon-size
+/// @require {variable} sl-icon-font
+/// @require {variable} sl-icon-sprite
+/// @require {mixin} sl-icon
+/// @param {Number} $size [$sl-icon-size]
+/// @param {String | Boolean} $font [$sl-icon-font]
+/// @param {String | Boolean} $sprite [$sl-icon-sprite]
+/// @output
+@mixin icon(
+	$size: $sl-icon-size,
+	$font: $sl-icon-font,
+	$sprite: $sl-icon-sprite
+) {
+	@include sl-icon(
+		$size,
+		$font,
+		$sprite
+	);
+}
+
+
+// Structures / Structure
+// ----------------------
+
+/// Turns an element into a structural module. Just an unprefixed wrapper for the `sl-structure()` mixin.
+/// @require {variable} sl-structure-h-gap-property
+/// @require {variable} sl-structure-child-selector
+/// @require {mixin} sl-structure
+/// @param {String} $h-align [left] - Either left, right, center or justify
+/// @param {String} $v-align [left] - Either top, bottom, center or fill
+/// @param {Number} $h-gap [0] - The horizontal spacing between children
+/// @param {Number} $v-gap [0] - The vertical spacing between children
+/// @param {Boolean} $h-outer-gap [false] - Whether to add an outside horizontal gap to the children. Uses the value set
+///   in $h-gap.
+/// @param {Boolean} $v-outer-gap [false] - Whether to add an outside vertical gap to the children. Uses the value set
+///   in $v-gap.
+/// @param {Boolean} $reversed [false] - Whether to reverse the order of the children.
+/// @param {String} $h-gap-property [$sl-structure-h-gap-property] - Whether the horizontal gap is applied using borders
+///   (border) or paddings (padding).
+/// @param {String} $child-selector [$sl-structure-child-selector] - The selector for the structure child element.
+/// @output Styles for a structural module. Will output up to two more selectors - one for the child elements, and
+///   one for the after pseudo element if the horizontal gap is set to justify.
+@mixin sl-structure(
+	$h-align: left,
+	$v-align: top,
+	$h-gap: 0,
+	$v-gap: 0,
+	$h-outer-gap: false,
+	$v-outer-gap: false,
+	$reversed: false,
+	$h-gap-property: $sl-structure-h-gap-property,
+	$child-selector: $sl-structure-child-selector
+) {
+	@include sl-structure(
+		$h-align,
+		$v-align,
+		$h-gap,
+		$v-gap,
+		$h-outer-gap,
+		$v-outer-gap,
+		$reversed,
+		$h-gap-property,
+		$child-selector
+	)
+}
+
+
+// Utilities / Clearfix
+// --------------------
+
+/// The clearfix mixin. Just an unprefixed wrapper for the `sl-clearfix` mixin.
+/// @output Styles on the :before and :after pseudo selectors that handle float clearing.
+@mixin clearfix {
+	@include sl-clearfix;
+}
+
+
+// Utilities / Media
+// -----------------
+
+/// Simple media query abstraction for expressive and maintainable media queries. Just an unprefixed wrapper for the
+/// `sl-media()` mixin.
+/// @require {mixin} sl-media
+/// @param {String} $device [all]
+/// @param {Number | List | String} $from [null]
+/// @param {Number | List | String} $until [null]
+/// @param {String} $property [width]
+/// @content Styles to go inside the media query
+/// @output Media query following the parameters passed
+@mixin media(
+	$device: all,
+	$from: null,
+	$until: null,
+	$property: width
+) {
+	@include sl-media(
+		$device,
+		$from,
+		$until,
+		$property
+	) {
+		@content;
+	}
+}
+
+/// Media query from a minimum value. Just an unprefixed wrapper for the `sl-from` mixin.
+/// @require {mixin} sl-from
+/// @param {Number | List | String} $value
+/// @param {String} $property [width]
+/// @content Styles to go inside the media query
+/// @output Media query following the parameters passed
+@mixin from($value, $property: width) {
+	@include sl-from($value, $property) {
+		@content;
+	}
+}
+
+/// Media query from a maximum value. Just an unprefixed wrapper for the `sl-until` mixin.
+/// @require {mixin} sl-until
+/// @param {Number | List | String} $value
+/// @param {String} $property [width]
+/// @content Styles to go inside the media query
+/// @output Media query following the parameters passed
+@mixin until($value, $property: width) {
+	@include sl-until($value, $property) {
+		@content;
+	}
+}
+
+/// Media query only at a certain breakpoint label. Just an unprefixed wrapper for the `sl-breakpoint` mixin.
+/// @require {mixin} sl-breakpoint
+/// @param {String} $value
+/// @param {String} $direction [from]
+/// @param {String} $property [width]
+/// @content Styles to go inside the media query
+/// @output Media query following the parameters passed
+@mixin breakpoint(
+	$breakpoint,
+	$direction: 'from',
+	$property: width
+) {
+	@include sl-breakpoint(
+		$breakpoint,
+		$direction,
+		$property
+	) {
+		@content;
+	}
+}
+
+/// Shorthand media queries to be used within selectors. Just an unprefixed wrapper for the `sl-responsive` mixin.
+/// @require {mixin} sl-responsive
+/// @param {Map} $map
+/// @param {String} $property [width]
+/// @param {String} $direction [from]
+/// @output Set of media queries containing the properties passed
+@mixin responsive(
+	$map,
+	$property: width,
+	$direction: from
+) {
+	@include sl-responsive(
+		$map,
+		$property,
+		$direction
+	);
+}
+
+
+// Utilities / Selectors
+// ---------------------
+
+/// An alias for passing 'module' as the type to the sl-selector mixin.
+/// @require {function} sl-selector
+/// @param {List} $names - Each name passed is prefixed and separated by a comma. If a name is also a list, each item of
+///   that is prefixed and joined together.
+/// @content Styles for the module selector
+/// @output The module selector and the passed styles
+@mixin module($names...) {
+	#{sl-selector('module', $names)} {
+		@content;
+	}
+}
+
+/// An alias for passing 'utility' as the type to the sl-selector mixin.
+/// @require {function} sl-selector
+/// @param {List} $names - Each name passed is prefixed and separated by a comma. If a name is also a list, each item of
+///   that is prefixed and joined together.
+/// @content Styles for the utility selector
+/// @output The utility selector and the passed styles
+@mixin utility($names...) {
+	#{sl-selector('utility', $names)} {
+		@content;
+	}
+}
+
+/// An alias for passing 'parameter' as the type to the sl-selector mixin.
+/// @require {function} sl-selector
+/// @param {List} $names - Each name passed is prefixed and separated by a comma. If a name is also a list, each item of
+///   that is prefixed and joined together.
+/// @content Styles for the parameter selector
+/// @output The parameter selector and the passed styles
+@mixin parameter($names...) {
+	#{sl-selector('&' 'parameter', $names)} {
+		@content;
+	}
+}
+
+/// An alias for passing 'state' as the type to the sl-selector mixin.
+/// @require {function} sl-selector
+/// @param {List} $names - Each name passed is prefixed and separated by a comma. If a name is also a list, each item of
+///   that is prefixed and joined together.
+/// @content Styles for the state selector
+/// @output The state selector and the passed styles
+@mixin state($names...) {
+	#{sl-selector('&' 'state', $names)} {
+		@content;
+	}
+}
+
+/// An alias for passing 'feature' as the type to the sl-selector mixin.
+/// @require {function} sl-selector
+/// @param {List} $names - Each name passed is prefixed and separated by a comma. If a name is also a list, each item of
+///   that is prefixed and joined together.
+/// @content Styles for the feature selector
+/// @output The feature selector and the passed styles
+@mixin feature($names...) {
+	#{sl-selector('&' 'feature', $names)} {
+		@content;
+	}
+}
+
+/// An alias for passing 'featureless' as the type to the sl-selector mixin.
+/// @require {function} sl-selector
+/// @param {List} $names - Each name passed is prefixed and separated by a comma. If a name is also a list, each item of
+///   that is prefixed and joined together.
+/// @content Styles for the featureless selector
+/// @output The featureless selector and the passed styles
+@mixin featureless($names...) {
+	#{sl-selector('&' 'featureless', $names)} {
+		@content;
+	}
+}
+
+
+// Utilities / Text
+// ----------------
+
+/// Turns an element into a textbox. Just an unprefixed wrapper for the `sl-textbox()` mixin.
+/// @require {function} sl-textbox
+/// @param {Number} $font-size [1em]
+/// @param {Number | List} $padding [0]
+/// @param {Number | List} $border-width [0]
+/// @param {Number} $line-height [1]
+/// @param {Boolean} $multiline [false]
+/// @output
+@mixin textbox(
+	$font-size: 1em,
+	$padding: 0,
+	$border-width: 0,
+	$line-height: 1,
+	$multiline: false
+) {
+	@include sl-textbox(
+		$font-size,
+		$padding,
+		$border-width,
+		$line-height,
+		$multiline
+	);
 }
