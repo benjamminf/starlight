@@ -10,19 +10,19 @@
 
 /// Controls whether styles in this file (base) are generated.
 /// @type Boolean
-$sl-generate-base-theme: $sl-generate-base !default;
+$sl-generate-base-extra: $sl-generate-base !default;
 
 
 // Asserts
 // -------
 
-@include sl-assert($sl-generate-base-theme, 'bool');
+@include sl-assert($sl-generate-base-extra, 'bool');
 
 
 // Styles
 // ------
 
-@if $sl-generate-base-theme {
+@if $sl-generate-base-extra {
 
 	html,
 	button,
