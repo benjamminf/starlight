@@ -55,4 +55,14 @@ $sl-generate-size: $sl-generate !default;
 			font-size: ($i * 1em) !important;
 		}
 	}
+
+	@each $gutter-name, $gutter-value in $sl-gutters {
+
+		@include sl-utility('spacer-' + $gutter-name) {
+
+			> * + * {
+				margin-top: $gutter-value !important;
+			}
+		}
+	}
 }
