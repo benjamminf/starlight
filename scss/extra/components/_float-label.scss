@@ -1,3 +1,33 @@
+////
+/// Float label.
+/// @group extra
+/// @author Benjamin Fleming
+////
+
+/// A mixin that creates a general field with a floating label that responds to focus and filling of the field. This
+/// mixin is to be used on a wrapping element (such as a `div`) that contains a `label` element and a field element
+/// (such as `input`). Javascript is required for this module to work.
+/// @require {function} sl-shorthand
+/// @require {function} sl-refactor
+/// @require {function} sl-sum
+/// @require {function} sl-convert
+/// @require {mixin} sl-field
+/// @require {mixin} sl-state
+/// @require {mixin} sl-featureless
+/// @param {Number} $font-size [1em]
+/// @param {Number} $label-font-size [$font-size]
+/// @param {Number} $small-label-font-size [$font-size]
+/// @param {Number} $padding [0]
+/// @param {Number} $border-width [0]
+/// @param {Number} $line-height [1]
+/// @param {Number} $field-shift [0]
+/// @param {Number} $label-shift [0]
+/// @param {Boolean} $shift-on-focus [false]
+/// @param {Boolean} $secondary-label [false]
+/// @param {String} $field-selector ['> input, > select, > textarea']
+/// @param {String} $label-selector ['> label']
+/// @param {String} $secondary-label-selector ['&:before']
+/// @output
 @mixin sl-float-label(
 	$font-size: 1em,
 	$label-font-size: $font-size,
@@ -9,11 +39,12 @@
 	$label-shift: 0,
 	$shift-on-focus: false,
 	$secondary-label: false,
-	$field-target: input select textarea,
 	$field-selector: '> input, > select, > textarea',
 	$label-selector: '> label',
 	$secondary-label-selector: '&:before'
 ) {
+	@extend %sl-float-label !optional;
+
 	position: relative;
 
 	$t-padding: sl-shorthand($padding, top);
