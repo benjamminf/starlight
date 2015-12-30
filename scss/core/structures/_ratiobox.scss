@@ -45,8 +45,9 @@ $sl-ratiobox-invert: false !default;
 ///
 /// @param {Number} $x [1]
 /// @param {Number} $y [1]
+/// @param {String | Boolean} $pseudo [before]
 /// @output
-@mixin sl-ratiobox($x: 1, $y: 1) {
+@mixin sl-ratiobox($x: 1, $y: 1, $pseudo: before) {
 
 	@each $n in $x, $y {
 		@if type-of($n) != 'number' or not unitless($n) or $n <= 0 {
@@ -56,7 +57,17 @@ $sl-ratiobox-invert: false !default;
 
 	display: block;
 	position: relative;
-	padding: ($y / $x * 100%) 0 0 100%;
+
+	@if $pseudo == 'before' or $pseudo == 'after' {
+		&:#{unquote($pseudo)} {
+			content: '';
+			display: block;
+			padding: ($y / $x * 100%) 0 0 100%;
+		}
+
+	} @else {
+		padding: ($y / $x * 100%) 0 0 100%;
+	}
 }
 
 ///
