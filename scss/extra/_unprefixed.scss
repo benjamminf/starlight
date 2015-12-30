@@ -1,0 +1,36 @@
+////
+/// Removes prefixes from selected mixins and functions. Variables cannot be unprefixed as they must be able to handle
+/// being changed.
+/// @group extra
+/// @author Benjamin Fleming
+////
+
+
+// Functions / Style
+// -----------------
+
+/// Retrieves the color from the color map setting. Just an unprefixed wrapper for `sl-color()`.
+/// @require {function} sl-color
+/// @param {String | Color} $name - The name of the color
+/// @param {Number} $alpha - The transparency of the color as a decimal
+/// @return {Color} A CSS color
+@function color($name, $alpha: auto) {
+	@return sl-color($name, $alpha);
+}
+
+/// Retrieves the font from the font map setting. Just an unprefixed wrapper for `sl-font()`.
+/// @require {function} sl-font
+/// @param {String} $name - The name of the font
+/// @return {String | List} The font or list of fonts and font types
+@function font($name) {
+	@return sl-font($name);
+}
+
+/// Retrieves the font weight from the weight map setting. Just an unprefixed wrapper for `sl-font-weight()`.
+/// @require {function} sl-font-weight
+/// @param {String} $name - The name of the font
+/// @param {String} $weight - The name of the font weight
+/// @return {Number | String} The font weight
+@function font-weight($name, $weight) {
+	@return sl-font-weight($name, $weight);
+}
