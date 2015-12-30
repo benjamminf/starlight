@@ -1,0 +1,204 @@
+////
+/// Removes prefixes from selected mixins, functions and placeholders. Variables cannot be unprefixed as they must be
+/// able to handle being changed.
+/// @group core
+/// @author Benjamin Fleming
+////
+
+
+// Functions / Framework
+// ---------------------
+
+/// Gets a sizes value. Just an unprefixed wrapper for `sl-sizes()`.
+/// @require {function} sl-size
+/// @param {String} $type - The size type
+/// @return {Number}
+@function size($type) {
+	@return sl-size($type);
+}
+
+/// Gets a breakpoints value. Just an unprefixed wrapper for `sl-breakpoints()`.
+/// @require {function} sl-breakpoint
+/// @param {String} $type - The breakpoint type
+/// @return {Number}
+@function breakpoint($type) {
+	@return sl-breakpoint($type);
+}
+
+/// Gets a gutters value. Just an unprefixed wrapper for `sl-gutters()`.
+/// @require {function} sl-gutter
+/// @param {String} $type - The gutter type
+/// @return {Number}
+@function gutter($type) {
+	@return sl-gutter($type);
+}
+
+/// Gets a divisions value. Just an unprefixed wrapper for `sl-division()`.
+/// @require {function} sl-division
+/// @param {String} $type - The division type
+/// @return {Number}
+@function division($type) {
+	@return sl-division($type);
+}
+
+/// Creates a module class name. Just an unprefixed wrapper for `sl-module()`.
+/// @require {function} sl-module
+/// @param {String} $name - The name of the module.
+/// @return {String} The module class name
+@function module($name) {
+	@return sl-module($name);
+}
+
+/// Creates a utility class name. Just an unprefixed wrapper for `sl-utility()`.
+/// @require {function} sl-utility
+/// @param {String} $name - The name of the utility.
+/// @param {String} $breakpoint [false] - The optional name of the breakpoint.
+/// @return {String} The utility class name
+@function utility($name, $breakpoint: false) {
+	@return sl-utility($name, $breakpoint);
+}
+
+/// Creates a parameter class name with optional breakpoint identifier. Just an unprefixed wrapper for `sl-parameter()`.
+/// @require {function} sl-parameter
+/// @param {String} $name - The name of the parameter.
+/// @param {String} $breakpoint [false] - The optional name of the breakpoint.
+/// @return {String} The parameter class name
+@function parameter($name, $breakpoint: false) {
+	@return sl-parameter($name, $breakpoint);
+}
+
+/// Creates a state class name. Just an unprefixed wrapper for `sl-state()`.
+/// @require {function} sl-state
+/// @param {String} $name - The name of the state.
+/// @return {String} The state class name
+@function state($name) {
+	@return sl-state($name);
+}
+
+/// Creates a feature class name. Just an unprefixed wrapper for `sl-feature()`.
+/// @require {function} sl-feature
+/// @param {String} $name - The name of the feature.
+/// @return {String} The feature class name
+@function feature($name) {
+	@return sl-feature($name);
+}
+
+/// Creates a featureless class name. Just an unprefixed wrapper for `sl-featureless()`.
+/// @require {function} sl-featureless
+/// @param {String} $name - The name of the feature.
+/// @return {String} The featureless class name
+@function featureless($name) {
+	@return sl-featureless($name);
+}
+
+/// Creates an attribute name. Just an unprefixed wrapper for `sl-attribute()`.
+/// @require {function} sl-attribute
+/// @param {String} $name - The name of the attribute.
+/// @param {String} $value - The optional value of the attribute.
+/// @return {String} The prefixed attribute name
+@function attribute($name, $value: false) {
+	@return sl-attribute($name, $value);
+}
+
+
+// Functions / List
+// ----------------
+
+/// Returns the "top" value of a list. Useful to extract individual side values from CSS short-hand lists like paddings.
+/// @require {function} sl-shorthand
+/// @param {List | Map} $list
+/// @return {*}
+@function top($list) {
+	@return sl-shorthand($list, top);
+}
+
+/// Returns the "right" value of a list. Useful to extract individual side values from CSS short-hand lists like
+/// paddings.
+/// @require {function} sl-shorthand
+/// @param {List | Map} $list
+/// @return {*}
+@function right($list) {
+	@return sl-shorthand($list, right);
+}
+
+/// Returns the "bottom" value of a list. Useful to extract individual side values from CSS short-hand lists like
+/// paddings.
+/// @require {function} sl-shorthand
+/// @param {List | Map} $list
+/// @return {*}
+@function bottom($list) {
+	@return sl-shorthand($list, bottom);
+}
+
+/// Returns the "left" value of a list. Useful to extract individual side values from CSS short-hand lists like
+/// paddings.
+/// @require {function} sl-shorthand
+/// @param {List | Map} $list
+/// @return {*}
+@function left($list) {
+	@return sl-shorthand($list, left);
+}
+
+
+// Functions / Number
+// ------------------
+
+/// Sum a list of values, either converting them all to a single unit or outputting them as a CSS3 calc() value. This is
+/// a unprefixed wrapper function for the `sl-sum` function.
+/// @require {function} sl-sum
+/// @param {Number | String | Map} $format
+/// @param {Number} $values
+/// @return {Number | String}
+@function sum($format: 'calc', $values...) {
+	@return sl-sum($format, $values);
+}
+
+/// Converts a number (or list of numbers) to pixels.
+/// @require {function} sl-convert
+/// @param {Number | List | Map} $value - The number (or list or map of numbers) to convert
+/// @param {Number} $factor [null] - The number to convert against (when converting between absolute and relative values)
+///   This is defaulted to the global font size set in the settings file.
+/// @return {Number | List | Map} The converted number (or list or map of numbers) in pixels
+@function px($value, $factor: null) {
+	@return sl-convert($value, 'px', $factor);
+}
+
+/// Converts a number (or list of numbers) to EM's.
+/// @require {function} sl-convert
+/// @param {Number | List | Map} $value - The number (or list or map of numbers) to convert
+/// @param {Number} $factor [null] - The number to convert against (when converting between absolute and relative values)
+///   This is defaulted to the global font size set in the settings file.
+/// @return {Number | List | Map} The converted number (or list or map of numbers) in EM's
+@function em($value, $factor: null) {
+	@return sl-convert($value, 'em', $factor);
+}
+
+/// Converts a number (or list of numbers) to relative EM's.
+/// @require {function} sl-convert
+/// @param {Number | List | Map} $value - The number (or list or map of numbers) to convert
+/// @param {Number} $factor [null] - The number to convert against (when converting between absolute and relative values)
+///   This is defaulted to the global font size set in the settings file.
+/// @return {Number | List | Map} The converted number (or list or map of numbers) in relative EM's
+@function rem($value, $factor: null) {
+	@return sl-convert($value, 'rem', $factor);
+}
+
+/// Converts a number (or list of numbers) to a percentage.
+/// @require {function} sl-convert
+/// @param {Number | List | Map} $value - The number (or list or map of numbers) to convert
+/// @param {Number} $factor [null] - The number to convert against (when converting between absolute and relative values)
+///   This is defaulted to the global font size set in the settings file.
+/// @return {Number | List | Map} The converted number (or list or map of numbers) as a percentage
+@function percent($value, $factor: null) {
+	@return sl-convert($value, '%', $factor);
+}
+
+/// Converts a number (or list of numbers) to a decimal.
+/// @require {function} sl-convert
+/// @param {Number | List | Map} $value - The number (or list or map of numbers) to convert
+/// @param {Number} $factor [null] - The number to convert against (when converting between absolute and relative values)
+///   This is defaulted to the global font size set in the settings file.
+/// @return {Number | List | Map} The converted number (or list or map of numbers) as a decimal
+@function decimal($value, $factor: null) {
+	@return sl-convert($value, '', $factor);
+}
