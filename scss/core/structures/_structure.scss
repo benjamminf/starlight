@@ -28,6 +28,8 @@ $sl-structure-child-selector: '*' !default;
 // ------
 
 /// Turns an element into a structural module.
+/// @require {variable} sl-structure-h-gap-property
+/// @require {variable} sl-structure-child-selector
 /// @param {String} $h-align [left] - Either left, right, center or justify
 /// @param {String} $v-align [left] - Either top, bottom, center or fill
 /// @param {Number} $h-gap [0] - The horizontal spacing between children
