@@ -257,31 +257,6 @@
 }
 
 
-// Components / Icon
-// -----------------
-
-/// Turns an element into an icon module. Just an unprefixed wrapper for the `sl-icon()` mixin.
-/// @require {variable} sl-icon-size
-/// @require {variable} sl-icon-font
-/// @require {variable} sl-icon-sprite
-/// @require {mixin} sl-icon
-/// @param {Number} $size [$sl-icon-size]
-/// @param {String | Boolean} $font [$sl-icon-font]
-/// @param {String | Boolean} $sprite [$sl-icon-sprite]
-/// @output
-@mixin icon(
-	$size: $sl-icon-size,
-	$font: $sl-icon-font,
-	$sprite: $sl-icon-sprite
-) {
-	@include sl-icon(
-		$size,
-		$font,
-		$sprite
-	);
-}
-
-
 // Structures / Structure
 // ----------------------
 
