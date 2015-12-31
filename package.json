@@ -1,8 +1,27 @@
 {
-	"title": "Starlight",
 	"name": "starlight",
-	"version": "0.0.1",
+	"title": "Starlight",
+	"description": "",
+	"author": "Benjamin Fleming <benjfleming21@gmail.com> (https://benjamminf.github.io)",
+	"version": "0.1.0",
 	"license": "MIT",
+	"keywords": [
+		"css",
+		"scss",
+		"responsive",
+		"front-end",
+		"framework",
+		"web"
+	],
+	"homepage": "https://github.com/benjamminf/starlight",
+	"bugs": {
+		"url": "https://github.com/benjamminf/starlight/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/benjamminf/starlight.git"
+	},
+	"main": "Gruntfile.js",
 	"scripts": {
 		"test": "grunt test"
 	},
