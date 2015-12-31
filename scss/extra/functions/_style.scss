@@ -30,7 +30,7 @@
 /// @param {String} $name - The name of the font
 /// @return {String | List} The font or list of fonts and font types
 @function sl-font($name) {
-	@return map-get($sl-fonts, $name);
+	@return join( map-get($sl-fonts, $name), (), 'comma');
 }
 
 /// Retrieves the font weight from the weight map setting.
