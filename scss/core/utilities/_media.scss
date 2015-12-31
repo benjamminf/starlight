@@ -272,6 +272,10 @@
 
 	@each $property, $value in $map {
 
+		@if type-of($property) != 'string' {
+			@error 'Property "#{inspect($property)}" must be a valid property name';
+		}
+
 		@if type-of($value) == 'map' {
 
 			@each $breakpoint, $breakpoint-value in $value {
@@ -286,7 +290,7 @@
 				}
 			}
 
-		} @else {
+		} @else if $value != null and $value != false {
 			#{unquote($property)}: $value;
 		}
 	}
