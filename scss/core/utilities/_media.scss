@@ -253,3 +253,43 @@
 		}
 	}
 }
+
+/// Outputs properties and their values, and handles breakpoints on each property.
+/// One could think of this mixin as the inversion of the `sl-responsive()` mixin. Instead of taking a map of
+/// breakpoints that contains lists of properties and their values, it takes a map of properties that contains lists of
+/// breakpoints and the properties value at that breakpoint.
+/// For example, `sl-responsive(('mobl': (prop1: val1, prop2: val2), 'desk': (prop2: val3)))` and
+/// `sl-properties((prop1: ('mobl': val1), prop2: ('mobl': val2, 'desk': val3)))` will have equivalent output.
+/// This mixin has an advantage, in that breakpoint maps are optional - you can simply set a property's value directly
+/// if needed.
+/// @require {mixin} sl-responsive
+/// @param {Map} $map
+/// @param {String} $property [width]
+/// @param {String} $direction [from]
+/// @output List of properties and their values, and possibly a set of media queries containing properties.
+@mixin sl-properties($map, $property: width, $direction: from) {
+	$responsive-map: ();
+
+	@each $property, $value in $map {
+
+		@if type-of($value) == 'map' {
+
+			@each $breakpoint, $breakpoint-value in $value {
+
+				@if map-has-key($responsive-map, $breakpoint) {
+					$breakpoint-map: map-get($responsive-map, $breakpoint);
+					$breakpoint-map: map-merge($breakpoint-map, ($property: $breakpoint-value));
+					$responsive-map: map-merge($responsive-map, ($breakpoint: $breakpoint-map));
+
+				} @else {
+					$responsive-map: map-merge($responsive-map, ($breakpoint: ($property: $breakpoint-value)));
+				}
+			}
+
+		} @else {
+			#{unquote($property)}: $value;
+		}
+	}
+
+	@include sl-responsive($responsive-map, $property, $direction);
+}
