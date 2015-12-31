@@ -404,6 +404,25 @@
 	);
 }
 
+/// Outputs properties and their values, and handles breakpoints on each property. Just an unprefixed wrapper for the
+/// `sl-properties` mixin.
+/// @require {mixin} sl-properties
+/// @param {Map} $map
+/// @param {String} $property [width]
+/// @param {String} $direction [from]
+/// @output List of properties and their values, and possibly a set of media queries containing properties.
+@mixin properties(
+	$map,
+	$property: width,
+	$direction: from
+) {
+	@include sl-properties(
+		$map,
+		$property,
+		$direction
+	);
+}
+
 
 // Utilities / Selectors
 // ---------------------
