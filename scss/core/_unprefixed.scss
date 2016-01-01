@@ -27,10 +27,10 @@
 
 /// Gets a gutters value. Just an unprefixed wrapper for `sl-gutters()`.
 /// @require {function} sl-gutter
-/// @param {String} $type - The gutter type
+/// @param {String | Number} $types - The gutter types or values
 /// @return {Number}
-@function gutter($type) {
-	@return sl-gutter($type);
+@function gutter($types...) {
+	@return sl-gutter($types);
 }
 
 /// Gets a divisions value. Just an unprefixed wrapper for `sl-division()`.
