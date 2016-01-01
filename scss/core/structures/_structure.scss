@@ -216,43 +216,49 @@ $sl-structure-child-selector: '*' !default;
 	//
 
 	@each $gutter-name, $gutter-value in $sl-gutters {
-		$gutter-half: ($gutter-value / 2);
+		$gutter-top: sl-shorthand($gutter-value, top);
+		$gutter-bottom: sl-shorthand($gutter-value, bottom);
+		$gutter-left: sl-shorthand($gutter-value, left);
+		$gutter-right: sl-shorthand($gutter-value, right);
+		$gutter-h: max($gutter-left, $gutter-right);
+		$gutter-v: max($gutter-top, $gutter-bottom);
+		$gutter-h-half: ($gutter-h / 2);
 
 		@include sl-parameter('h-gap-' + $gutter-name) {
-			margin-left: -$gutter-half;
-			margin-right: -$gutter-half;
+			margin-left: -$gutter-h-half;
+			margin-right: -$gutter-h-half;
 
 			@include sl-parameter('h-outer-gap') {
 				margin-left: 0;
 				margin-right: 0;
-				padding-left: $gutter-half;
-				padding-right: $gutter-half;
+				padding-left: $gutter-h-half;
+				padding-right: $gutter-h-half;
 			}
 
 			> * {
 
 				@if $sl-structure-h-gap-property == border {
-					border-left: $gutter-half solid transparent;
-					border-right: $gutter-half solid transparent;
+					border-left: $gutter-h-half solid transparent;
+					border-right: $gutter-h-half solid transparent;
 					background-clip: padding-box; // Borders are used for gaps, so clip backgrounds at paddings
 
 				} @else if $sl-structure-h-gap-property == padding {
-					padding: 0 $gutter-half;
+					padding: 0 $gutter-h-half;
 				}
 			}
 		}
 
 		@include sl-parameter('v-gap-' + $gutter-name) {
-			margin-top: -$gutter-value;
+			margin-top: -$gutter-v;
 
 			@include sl-parameter('v-outer-gap') {
 				margin-top: 0;
 				padding-top: 0;
-				padding-bottom: $gutter-value;
+				padding-bottom: $gutter-v;
 			}
 
 			> * {
-				margin-top: $gutter-value;
+				margin-top: $gutter-v;
 			}
 		}
 	}
