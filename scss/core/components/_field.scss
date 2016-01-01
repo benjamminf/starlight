@@ -26,6 +26,9 @@
 
 	display: block;
 	width: 100%;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 
 	@include sl-extend-tags(input, select) {
 
