@@ -61,7 +61,7 @@ $sl-generate-text: $sl-generate !default;
 		$p-top:    sl-sum('calc', $p-top, $lh-bleed);
 		$p-bottom: sl-sum('calc', $p-bottom, $lh-bleed);
 
-		$padding: max($p-top, 0) max($p-right, 0) max($p-bottom, 0) max($p-left, 0);
+		$padding: $p-top $p-right $p-bottom $p-left;
 	}
 
 	//
