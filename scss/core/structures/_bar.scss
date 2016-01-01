@@ -76,6 +76,12 @@ $sl-bar-item-selector: sl-module('item') !default;
 					}
 
 					@each $gutter-name, $gutter-value in $sl-gutters {
+						$gutter-top: sl-shorthand($gutter-value, top);
+						$gutter-bottom: sl-shorthand($gutter-value, bottom);
+						$gutter-left: sl-shorthand($gutter-value, left);
+						$gutter-right: sl-shorthand($gutter-value, right);
+						$gutter-h: max($gutter-left, $gutter-right);
+						$gutter-v: max($gutter-top, $gutter-bottom);
 
 						@include sl-parameter('h-gap-' + $gutter-name) {
 							margin-left: 0;
@@ -84,13 +90,13 @@ $sl-bar-item-selector: sl-module('item') !default;
 							@include sl-parameter('h-outer-gap') {
 
 								> #{$sl-bar-item-selector} {
-									border-left-width: $gutter-value;
-									border-right-width: $gutter-value;
+									border-left-width: $gutter-h;
+									border-right-width: $gutter-h;
 								}
 							}
 
 							> #{$sl-bar-item-selector} {
-								border-left-width: $gutter-value;
+								border-left-width: $gutter-h;
 								border-right-width: 0;
 
 								&:first-child {
@@ -105,8 +111,8 @@ $sl-bar-item-selector: sl-module('item') !default;
 							@include sl-parameter('v-outer-gap') {
 
 								> #{$sl-bar-item-selector} {
-									border-top: $gutter-value solid transparent;
-									border-bottom: $gutter-value solid transparent;
+									border-top: $gutter-v solid transparent;
+									border-bottom: $gutter-v solid transparent;
 								}
 							}
 						}
