@@ -1,5 +1,21 @@
 # Changelog
 
+#### v0.2.0
+- [Added] Added new spacer utility to horizontally and vertically space an elements children
+- [Added] Added new responsive mixin "sl-properties"
+- [Added] Added alignbox group feature to allow multiple alignments in one alignbox
+- [Improved] Gutter setting now allows lists of gutter values, that target individual sides
+- [Improved] Ratiobox now allows width/max-width to be set
+- [Improved] Improved error reporting in various cases
+- [Improved] Setting the font variable now allows space-separated font names
+- [Improved] Removed default browser appearance on fields and buttons
+- [Fixed] Fixed bug with textbox elements (field, button, etc) when setting line height
+- [Fixed] Fixed bug with "sl-sum" function where cases of supplying just zero values threw an error
+- [Fixed] Corrected issue with the horizontal outer gaps on fitted bars not displaying correctly
+- [Fixed] Fixed the name of the prefixless float label mixin
+- [Fixed] Fixed class names of column responsive sizes
+- [Fixed] Fixed issue with ratiobox mixin not applying styles correctly
+
 #### v0.1.0
 - [Added] Added tests and linting
 - [Added] Added CI support
