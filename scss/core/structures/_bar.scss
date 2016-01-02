@@ -87,20 +87,20 @@ $sl-bar-item-selector: sl-module('item') !default;
 							margin-left: 0;
 							margin-right: 0;
 
-							@include sl-parameter('h-outer-gap') {
-
-								> #{$sl-bar-item-selector} {
-									border-left-width: $gutter-h;
-									border-right-width: $gutter-h;
-								}
-							}
-
 							> #{$sl-bar-item-selector} {
 								border-left-width: $gutter-h;
 								border-right-width: 0;
 
 								&:first-child {
 									border-left-width: 0;
+								}
+							}
+
+							@include sl-parameter('h-outer-gap') {
+
+								> #{$sl-bar-item-selector} {
+									border-left-width: $gutter-h;
+									border-right-width: $gutter-h;
 								}
 							}
 						}
