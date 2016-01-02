@@ -1,5 +1,6 @@
 ////
 /// Icon
+/// TODO: icon-button, icon-field, refactor this whole damn thing
 /// @group extra-components
 /// @author Benjamin Fleming
 ////
@@ -18,7 +19,7 @@ $sl-icon-selector: sl-module('icon') !default;
 
 // The icon attribute for setting the icon type
 // @type String
-$sl-icon-attribute: sl-attribute('icon') !default;
+$sl-icon-attribute-name: sl-prefix('attribute') + 'icon' !default;
 
 /// The name of the icon font, if applicable
 /// @type String | Boolean
@@ -45,6 +46,7 @@ $sl-icons: false !default;
 
 @include sl-assert($sl-generate-icon, 'bool');
 @include sl-assert($sl-icon-selector, 'string');
+@include sl-assert($sl-icon-attribute-name, 'string');
 @include sl-assert($sl-icon-font, 'bool' 'string');
 @include sl-assert($sl-icon-sprite, 'bool' 'string');
 @include sl-assert($sl-icon-size, 'number');
@@ -155,7 +157,7 @@ $sl-icons: false !default;
 	@if $sl-icons {
 		@each $name, $value in $sl-icons {
 
-			[#{$sl-icon-attribute}="#{$name}"] {
+			[#{$sl-icon-attribute-name}="#{$name}"] {
 				@include sl-icon-type($value);
 			}
 		}
