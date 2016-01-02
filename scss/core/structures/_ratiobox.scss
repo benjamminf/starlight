@@ -112,13 +112,19 @@ $sl-ratiobox-invert: false !default;
 			}
 
 			@include sl-parameter('ratio-' + sl-str-replace($x + '-' + $y, '.', '_') ) {
-				padding-top: ($y / $x * 100%);
+
+				&:before {
+					padding-top: ($y / $x * 100%);
+				}
 			}
 
 			@if $sl-ratiobox-invert {
 
 				@include sl-parameter('ratio-' + sl-str-replace($y + '-' + $x, '.', '_') ) {
-					padding-top: ($x / $y * 100%);
+
+					&:before {
+						padding-top: ($x / $y * 100%);
+					}
 				}
 			}
 		}
