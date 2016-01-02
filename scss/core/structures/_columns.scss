@@ -49,7 +49,7 @@ $sl-column-selector: sl-module('column') !default;
 
 					@each $division-name, $division-value in $sl-divisions {
 
-						&#{sl-prefix('breakpoint') + $breakpoint-name + '-' + $division-name} {
+						&.#{sl-prefix('breakpoint') + $breakpoint-name + '-' + $division-name} {
 							width: $division-value;
 						}
 					}
