@@ -26,7 +26,7 @@ $sl-ratiobox-ratios: (1, 1) (5, 4) (4, 3) (3, 2) (16, 10) (5, 3) (16, 9) (1.85, 
 
 /// Whether or not the inversions of each ratio should be made a parameter
 /// @type Boolean
-$sl-ratiobox-invert: false !default;
+$sl-ratiobox-invert: true !default;
 
 
 // Asserts
