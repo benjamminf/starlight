@@ -395,8 +395,9 @@ $sl-number-relative-units: (
 	//
 
 	@if index('calc' '-webkit-calc' '-moz-calc', $format) {
+		$sums-length: length($sums);
 
-		@if length($sums) > 1 {
+		@if $sums-length > 1 {
 			$numbers: '';
 			$first: true;
 			$single: true;
@@ -427,9 +428,9 @@ $sl-number-relative-units: (
 
 			@return unquote(if($single, $numbers, $format + '(' + $numbers + ')'));
 
-		} @else { // Can trust the length is equal to one, thanks to the error checking above
+		} @else {
 
-			@return nth( nth($sums, 1), 2);
+			@return if($sums-length > 0, nth( nth($sums, 1), 2), 0);
 		}
 
 	} @else {
