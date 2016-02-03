@@ -105,7 +105,7 @@
 	);
 	$s-label-right: sl-sum(
 		if(sl-unit-type($r-padding) == 'absolute', $r-padding, sl-convert($rf-r-padding, unit($r-padding), $small-label-font-size)),
-		if(sl-unit-type($r-border-width) == 'absolute', sl-convert($rf-r-border-width, unit($r-border-width), $small-label-font-size))
+		if(sl-unit-type($r-border-width) == 'absolute', $r-border-width, sl-convert($rf-r-border-width, unit($r-border-width), $small-label-font-size))
 	);
 
 	#{$field-selector} {
