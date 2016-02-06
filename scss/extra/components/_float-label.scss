@@ -52,20 +52,20 @@
 	$l-padding: sl-shorthand($padding, left);
 	$r-padding: sl-shorthand($padding, right);
 
-	$rf-t-padding: sl-refactor($t-padding, $font-size);
-	$rf-b-padding: sl-refactor($b-padding, $font-size);
-	$rf-l-padding: sl-refactor($l-padding, $font-size);
-	$rf-r-padding: sl-refactor($r-padding, $font-size);
+	$rf-t-padding: if(sl-absolute-unit($t-padding), $t-padding, sl-refactor($t-padding, $font-size));
+	$rf-b-padding: if(sl-absolute-unit($b-padding), $b-padding, sl-refactor($b-padding, $font-size));
+	$rf-l-padding: if(sl-absolute-unit($l-padding), $l-padding, sl-refactor($l-padding, $font-size));
+	$rf-r-padding: if(sl-absolute-unit($r-padding), $r-padding, sl-refactor($r-padding, $font-size));
 
 	$t-border-width: sl-shorthand($border-width, top);
 	$b-border-width: sl-shorthand($border-width, bottom);
 	$l-border-width: sl-shorthand($border-width, left);
 	$r-border-width: sl-shorthand($border-width, right);
 
-	$rf-t-border-width: sl-refactor($t-border-width, $font-size);
-	$rf-b-border-width: sl-refactor($b-border-width, $font-size);
-	$rf-l-border-width: sl-refactor($l-border-width, $font-size);
-	$rf-r-border-width: sl-refactor($r-border-width, $font-size);
+	$rf-t-border-width: if(sl-absolute-unit($t-border-width), $t-border-width, sl-refactor($t-border-width, $font-size));
+	$rf-b-border-width: if(sl-absolute-unit($b-border-width), $b-border-width, sl-refactor($b-border-width, $font-size));
+	$rf-l-border-width: if(sl-absolute-unit($l-border-width), $l-border-width, sl-refactor($l-border-width, $font-size));
+	$rf-r-border-width: if(sl-absolute-unit($r-border-width), $r-border-width, sl-refactor($r-border-width, $font-size));
 
 	// TODO Allow for outputting calc() if needed instead of always converting units.
 	// This will require some refactoring of the textbox mixin to allow for lists of values to be passed (and later
@@ -76,36 +76,36 @@
 	$field-padding: $field-t-padding $r-padding $field-b-padding $l-padding;
 
 	$label-top: sl-sum(
-		if(sl-unit-type($t-padding) == 'absolute', $t-padding, sl-convert($rf-t-padding, unit($t-padding), $label-font-size)),
-		if(sl-unit-type($t-border-width) == 'absolute', $t-border-width, sl-convert($rf-t-border-width, unit($t-border-width), $label-font-size)),
+		sl-convert($rf-t-padding, unit($t-padding), $label-font-size),
+		sl-convert($rf-t-border-width, unit($t-border-width), $label-font-size),
 		sl-refactor($font-size / 2, $label-font-size, $font-size),
 		sl-convert(-0.5em, unit($label-font-size), $label-font-size)
 	);
 	$label-left: sl-sum(
-		if(sl-unit-type($l-padding) == 'absolute', $l-padding, sl-convert($rf-l-padding, unit($l-padding), $label-font-size)),
-		if(sl-unit-type($l-border-width) == 'absolute', $l-border-width, sl-convert($rf-l-border-width, unit($l-border-width), $label-font-size))
+		sl-convert($rf-l-padding, unit($l-padding), $label-font-size),
+		sl-convert($rf-l-border-width, unit($l-border-width), $label-font-size)
 	);
 	$label-right: sl-sum(
-		if(sl-unit-type($r-padding) == 'absolute', $r-padding, sl-convert($rf-r-padding, unit($r-padding), $label-font-size)),
-		if(sl-unit-type($r-border-width) == 'absolute', $r-border-width, sl-convert($rf-r-border-width, unit($r-border-width), $label-font-size))
+		sl-convert($rf-r-padding, unit($r-padding), $label-font-size),
+		sl-convert($rf-r-border-width, unit($r-border-width), $label-font-size)
 	);
 
 	$label-scale: sl-convert($small-label-font-size, unit($label-font-size)) / $label-font-size;
 
 	$s-label-top: sl-sum(
-		if(sl-unit-type($t-padding) == 'absolute', $t-padding, sl-convert($rf-t-padding, unit($t-padding), $small-label-font-size)),
-		if(sl-unit-type($t-border-width) == 'absolute', $t-border-width, sl-convert($rf-t-border-width, unit($t-border-width), $label-font-size)),
+		sl-convert($rf-t-padding, unit($t-padding), $small-label-font-size),
+		sl-convert($rf-t-border-width, unit($t-border-width), $label-font-size),
 		sl-refactor($font-size / 2, $small-label-font-size, $font-size),
 		sl-convert(-0.5em, unit($small-label-font-size), $small-label-font-size),
 		$label-shift
 	);
 	$s-label-left: sl-sum(
-		if(sl-unit-type($l-padding) == 'absolute', $l-padding, sl-convert($rf-l-padding, unit($l-padding), $small-label-font-size)),
-		if(sl-unit-type($l-border-width) == 'absolute', $l-border-width, sl-convert($rf-l-border-width, unit($l-border-width), $small-label-font-size))
+		sl-convert($rf-l-padding, unit($l-padding), $small-label-font-size),
+		sl-convert($rf-l-border-width, unit($l-border-width), $small-label-font-size)
 	);
 	$s-label-right: sl-sum(
-		if(sl-unit-type($r-padding) == 'absolute', $r-padding, sl-convert($rf-r-padding, unit($r-padding), $small-label-font-size)),
-		if(sl-unit-type($r-border-width) == 'absolute', $r-border-width, sl-convert($rf-r-border-width, unit($r-border-width), $small-label-font-size))
+		sl-convert($rf-r-padding, unit($r-padding), $small-label-font-size),
+		sl-convert($rf-r-border-width, unit($r-border-width), $small-label-font-size)
 	);
 
 	#{$field-selector} {
