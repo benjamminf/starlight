@@ -76,31 +76,11 @@ $sl-number-relative-units: (
 // Private
 // -------
 
-/// Checks if a unit is absolute.
-/// @require {variable} sl-number-absolute-units
-/// @param {Number | String} $value - The number or unit (as a string) to check.
-/// @return {Boolean}
-@function -sl-absolute-unit($value) {
-	@return map-has-key($sl-number-absolute-units,
-		if(type-of($value) == 'number', unit($value), $value)
-	);
-}
-
-/// Checks if a unit is relative.
-/// @require {variable} sl-number-relative-units
-/// @param {Number | String} $value - The number or unit (as a string) to check.
-/// @return {Boolean}
-@function -sl-relative-unit($value) {
-	@return map-has-key($sl-number-relative-units,
-		if(type-of($value) == 'number', unit($value), $value)
-	);
-}
-
 /// Converts a number into a normalized value. Used for conversion.
 /// @require {variable} sl-number-absolute-units
 /// @require {variable} sl-number-relative-units
-/// @require {function} -sl-absolute-unit
-/// @require {function} -sl-relative-unit
+/// @require {function} sl-absolute-unit
+/// @require {function} sl-relative-unit
 /// @param {Number} $value - The number to normalize
 /// @return {Number} The normalized number
 /// @example scss
@@ -108,11 +88,11 @@ $sl-number-relative-units: (
 @function -sl-unit-normalize($value) {
 	$unit: unit($value);
 
-	@if -sl-absolute-unit($unit) {
+	@if sl-absolute-unit($unit) {
 		@return ($value / map-get($sl-number-absolute-units, $unit));
 	}
 
-	@if -sl-relative-unit($unit) {
+	@if sl-relative-unit($unit) {
 		@return ($value / map-get($sl-number-relative-units, $unit));
 	}
 
@@ -134,18 +114,38 @@ $sl-number-relative-units: (
 // Public
 // ------
 
+/// Checks if a unit is absolute.
+/// @require {variable} sl-number-absolute-units
+/// @param {Number | String} $value - The number or unit (as a string) to check.
+/// @return {Boolean}
+@function sl-absolute-unit($value) {
+	@return map-has-key($sl-number-absolute-units,
+		if(type-of($value) == 'number', unit($value), $value)
+	);
+}
+
+/// Checks if a unit is relative.
+/// @require {variable} sl-number-relative-units
+/// @param {Number | String} $value - The number or unit (as a string) to check.
+/// @return {Boolean}
+@function sl-relative-unit($value) {
+	@return map-has-key($sl-number-relative-units,
+		if(type-of($value) == 'number', unit($value), $value)
+	);
+}
+
 /// Gets the unit type
-/// @require {function} -sl-relative-unit
-/// @require {function} -sl-absolute-unit
+/// @require {function} sl-relative-unit
+/// @require {function} sl-absolute-unit
 /// @param {Number | String} $value - The number or unit (as a string) to check.
 /// @return {String} absolute, relative or other
 @function sl-unit-type($value) {
 
-	@if -sl-relative-unit($value) {
+	@if sl-relative-unit($value) {
 		@return 'relative';
 	}
 
-	@if -sl-absolute-unit($value) {
+	@if sl-absolute-unit($value) {
 		@return 'absolute';
 	}
 
@@ -191,8 +191,8 @@ $sl-number-relative-units: (
 /// @require {variable} sl-number-relative-units
 /// @require {variable} -sl-default-font-size
 /// @require {function} sl-precision
-/// @require {function} -sl-absolute-unit
-/// @require {function} -sl-relative-unit
+/// @require {function} sl-absolute-unit
+/// @require {function} sl-relative-unit
 /// @require {function} -sl-unit-normalize
 /// @param {Number | List | Map} $value - The number (or list or map of numbers) to convert
 /// @param {String} $unit - The unit to convert the number to
@@ -238,16 +238,16 @@ $sl-number-relative-units: (
 	$normal: -sl-unit-normalize($value);
 	$output: $normal;
 
-	@if -sl-absolute-unit($value) {
+	@if sl-absolute-unit($value) {
 
-		@if -sl-absolute-unit($unit) {
+		@if sl-absolute-unit($unit) {
 
 			$output: $normal * map-get($sl-number-absolute-units, $unit);
 
-		} @elseif -sl-relative-unit($unit) {
+		} @elseif sl-relative-unit($unit) {
 
 			$convert-factor: -sl-unit-normalize($sl-font-size)
-				* if( -sl-relative-unit($sl-font-size), ($-sl-default-font-size / 1px), 1 );
+				* if( sl-relative-unit($sl-font-size), ($-sl-default-font-size / 1px), 1 );
 
 			$normal-factor: if( type-of($factor) == 'number',
 				-sl-unit-normalize( sl-convert($factor, px, $convert-factor * 1px) ),
@@ -260,12 +260,12 @@ $sl-number-relative-units: (
 			@error '#{inspect($unit)} is not a valid unit';
 		}
 
-	} @elseif -sl-relative-unit($value) {
+	} @elseif sl-relative-unit($value) {
 
-		@if -sl-absolute-unit($unit) {
+		@if sl-absolute-unit($unit) {
 
 			$convert-factor: -sl-unit-normalize($sl-font-size)
-				* if( -sl-relative-unit($sl-font-size), ($-sl-default-font-size / 1px), 1 );
+				* if( sl-relative-unit($sl-font-size), ($-sl-default-font-size / 1px), 1 );
 
 			$normal-factor: if( type-of($factor) == 'number',
 				-sl-unit-normalize( sl-convert($factor, px, $convert-factor * 1px) ),
@@ -274,7 +274,7 @@ $sl-number-relative-units: (
 
 			$output: ($normal * $normal-factor) * map-get($sl-number-absolute-units, $unit);
 
-		} @elseif -sl-relative-unit($unit) {
+		} @elseif sl-relative-unit($unit) {
 
 			$output: $normal * map-get($sl-number-relative-units, $unit);
 
