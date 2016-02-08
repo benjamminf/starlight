@@ -35,6 +35,16 @@
 	@return sl-font-weight($name, $weight);
 }
 
+/// Retrieves the font weight from the weight map setting, with optional properties to be used as a transition value.
+/// Just an unprefixed wrapper for `sl-transition()`.
+/// @require {function} sl-transition
+/// @param {String} $name - The name of the transition
+/// @param {List | String} $properties - The list of properties
+/// @return {List} The transition value
+@function transition($name, $properties: false) {
+	@return sl-transition($name, $weight);
+}
+
 
 // Components / Icon
 // -----------------
