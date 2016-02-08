@@ -53,6 +53,12 @@ $sl-font-weights: (
 	)
 ) !default;
 
+/// The transitions to use in your template
+/// @type Map
+$sl-transitions: (
+	'primary': 0.3s cubic-bezier(0.23, 1, 0.32, 1)
+) !default;
+
 
 // Asserts
 // -------
@@ -60,3 +66,4 @@ $sl-font-weights: (
 @include sl-assert($sl-colors, 'map', 'color' 'string');
 @include sl-assert($sl-fonts, 'map', 'list' 'string');
 @include sl-assert($sl-font-weights, 'map', 'map', 'string' 'number');
+@include sl-assert($sl-transitions, 'map', 'list' 'string' 'number');

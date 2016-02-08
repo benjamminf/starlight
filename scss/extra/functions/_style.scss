@@ -41,3 +41,24 @@
 @function sl-font-weight($name, $weight) {
 	@return map-get( map-get($sl-font-weights, $name), $weight);
 }
+
+/// Retrieves the font weight from the weight map setting, with optional properties to be used as a transition value.
+/// @require {variable} sl-transitions
+/// @param {String} $name - The name of the transition
+/// @param {List | String} $properties - The list of properties
+/// @return {List} The transition value
+@function sl-transition($name, $properties: false) {
+	$transition: join( map-get($sl-transitions, $name), (), space);
+
+	@if not $properties {
+		@return $transition;
+	}
+
+	$value: ();
+
+	@each $property in $properties {
+		$value: append($value, $property $transition, comma);
+	}
+
+	@return $value;
+}
