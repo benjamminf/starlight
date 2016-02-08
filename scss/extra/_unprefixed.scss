@@ -42,7 +42,7 @@
 /// @param {List | String} $properties - The list of properties
 /// @return {List} The transition value
 @function transition($name, $properties: false) {
-	@return sl-transition($name, $weight);
+	@return sl-transition($name, $properties);
 }
 
 
