@@ -278,7 +278,7 @@
 /// @param {String} $child-selector [$sl-structure-child-selector] - The selector for the structure child element.
 /// @output Styles for a structural module. Will output up to two more selectors - one for the child elements, and
 ///   one for the after pseudo element if the horizontal gap is set to justify.
-@mixin sl-structure(
+@mixin structure(
 	$h-align: left,
 	$v-align: top,
 	$h-gap: 0,
@@ -300,6 +300,47 @@
 		$h-gap-property,
 		$child-selector
 	)
+}
+
+
+// Structures / Align box
+// ----------------------
+
+/// Just an unprefixed wrapper for the `sl-alignbox()` mixin.
+/// @require {mixin} sl-alignbox
+/// @param {String} $h-align [center]
+/// @param {String} $v-align [center]
+/// @output
+@mixin alignbox($h-align: center, $v-align: center) {
+	@include sl-alignbox($h-align, $v-align);
+}
+
+/// Just an unprefixed wrapper for the `sl-alignbox-box()` mixin.
+/// @require {mixin} sl-alignbox-box
+/// @output
+@mixin alignbox-box {
+	@include sl-alignbox-box;
+}
+
+
+// Structures / Ratio box
+// ----------------------
+
+/// Just an unprefixed wrapper for the `sl-ratiobox()` mixin.
+/// @require {mixin} sl-ratiobox
+/// @param {Number} $x [1]
+/// @param {Number} $y [1]
+/// @param {String | Boolean} $pseudo [before]
+/// @output
+@mixin ratiobox($x: 1, $y: 1, $pseudo: before) {
+	@include sl-ratiobox($x, $y, $pseudo);
+}
+
+/// Just an unprefixed wrapper for the `sl-ratiobox-box()` mixin.
+/// @require {mixin} sl-ratiobox-box
+/// @output
+@mixin ratiobox-box {
+	@include sl-ratiobox-box;
 }
 
 
