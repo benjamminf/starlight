@@ -35,7 +35,7 @@
 /// Gets a gutters value. Just a readable wrapper for `map-get()` on `$sl-gutters`.
 /// @require {variable} $sl-gutters
 /// @param {String | Number} $types - The gutter types or values
-/// @return {Number}
+/// @return {List | Number}
 @function sl-gutter($types...) {
 	$types: sl-flatten($types);
 	$output: ();
@@ -45,7 +45,7 @@
 		$output: join($output, $gutter, 'space');
 	}
 
-	@return $output;
+	@return if(length($output) == 1, nth($output, 1), $output);
 }
 
 /// Gets a divisions value. Just a readable wrapper for `map-get()` on `$sl-divisions`.
