@@ -1,5 +1,13 @@
 # Changelog
 
+#### v0.3.0
+
+- [Added] Added absolute/relative unit detection functions to public core API
+- [Added] Added transition management (setting and function) to the extra API
+- [Added] Added unprefixed structure mixins (structure, alignbox, ratiobox)
+- [Improved] Improved label positioning by bypassing some unnecessary calculations
+- [Improved] Gutter function will now return a number instead of a list when only one gutter is requested
+
 #### v0.2.0
 - [Added] Added new spacer utility to horizontally and vertically space an elements children
 - [Added] Added new responsive mixin "sl-properties"
