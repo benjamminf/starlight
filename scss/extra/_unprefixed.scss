@@ -137,7 +137,9 @@
 /// @content Styles to target the surrounding quotes.
 /// @output
 @mixin quotes($outer: $sl-quotes-double, $inner: $sl-quotes-single) {
-	@include sl-quotes($outer, $inner);
+	@include sl-quotes($outer, $inner) {
+		@content;
+	}
 }
 
 
