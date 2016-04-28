@@ -24,7 +24,12 @@ $sl-generate-size: $sl-generate !default;
 
 @if $sl-generate-size {
 
-	@include sl-selector(img 'utility', 'responsive', 'fill') {
+	@include sl-selector(img 'utility', 'responsive', 'h-fill', 'fill', 'v-fill') {
+		height: auto !important;
+	}
+	
+	@include sl-selector(img 'utility', 'cover', 'contain') {
+		width: auto !important;
 		height: auto !important;
 	}
 
@@ -32,9 +37,25 @@ $sl-generate-size: $sl-generate !default;
 		max-width: 100% !important;
 	}
 
-	@include sl-utility('fill') {
+	// Deprecating `fill` utility for `h-fill`
+	@include sl-utility('h-fill', 'fill') {
 		display: block !important;
 		width: 100% !important;
+	}
+	
+	@include sl-utility('v-fill') {
+		display: block !important;
+		height: 100% !important;
+	}
+	
+	@include sl-utility('cover') {
+		min-width: 100% !important;
+		min-height: 100% !important;
+	}
+	
+	@include sl-utility('contain') {
+		max-width: 100% !important;
+		max-height: 100% !important;
 	}
 
 	@include sl-utility('inline') {
