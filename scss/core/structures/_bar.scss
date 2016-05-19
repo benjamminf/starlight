@@ -47,7 +47,7 @@ $sl-bar-item-selector: sl-module('item') !default;
 
 		@each $breakpoint-name, $breakpoint-value in sl-sort($sl-breakpoints) {
 
-			@include sl-from($breakpoint-value) {
+			@include sl-breakpoint($breakpoint-value) {
 
 				@include sl-parameter('fitted' + sl-prefix('breakpoint') + $breakpoint-name) {
 					display: table; // TODO extend flexbox maybe?
