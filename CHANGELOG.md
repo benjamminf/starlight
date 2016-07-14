@@ -1,5 +1,8 @@
 # Changelog
 
+#### v0.3.2
+- `Fixed` Fixed box sizing for certain input types (search)
+
 #### v0.3.1
 - `Added` Added `+contain`, `+cover`, `+h-fill` and `+v-fill` utilities
 - `Improved` Fitted bars now target only at certain breakpoints, instead of cascading
