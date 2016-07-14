@@ -24,6 +24,7 @@
 ) {
 	@extend %sl-field !optional;
 
+	box-sizing: border-box; // Fix for input[type="search"] elements as they force content-box sizing
 	display: block;
 	width: 100%;
 	border-radius: 0;
