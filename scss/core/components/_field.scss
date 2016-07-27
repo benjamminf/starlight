@@ -46,6 +46,12 @@
 	@include sl-extend-tags(input) {
 		line-height: normal;
 	}
+	
+	// Ensures text doesn't get vertically clipped in select tags
+	@include sl-extend-tags(select) {
+		padding: 0 sl-shorthand($padding, 'right') 0 sl-shorthand($padding, 'left');
+		line-height: sl-sum(sl-shorthand($padding, 'top'), sl-shorthand($padding, 'bottom'), $line-height);
+	}
 
 	@include sl-extend-tags(textarea) {
 
