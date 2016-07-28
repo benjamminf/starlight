@@ -49,8 +49,23 @@
 	
 	// Ensures text doesn't get vertically clipped in select tags
 	@include sl-extend-tags(select) {
-		padding: 0 sl-shorthand($padding, 'right') 0 sl-shorthand($padding, 'left');
-		line-height: sl-sum(sl-shorthand($padding, 'top'), sl-shorthand($padding, 'bottom'), $line-height);
+		$t-padding: sl-shorthand($padding, 'top');
+		$b-padding: sl-shorthand($padding, 'bottom');
+		$l-padding: sl-shorthand($padding, 'left');
+		$r-padding: sl-shorthand($padding, 'right');
+
+		$min-v-padding: min($t-padding, $b-padding);
+
+		@if $t-padding > $b-padding {
+			$t-padding: $t-padding - $b-padding;
+			$b-padding: 0;
+		} @else {
+			$b-padding: $b-padding - $t-padding;
+			$t-padding: 0;
+		}
+
+		line-height: sl-sum($min-v-padding * 2, $line-height);
+		padding: $t-padding $r-padding $b-padding $l-padding;
 	}
 
 	@include sl-extend-tags(textarea) {
