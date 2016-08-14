@@ -46,7 +46,7 @@ $sl-text-columns: 6 !default;
 
 				@for $i from 1 through $sl-text-columns {
 
-					&#{sl-prefix('breakpoint') + $breakpoint-name + '-' + $i} {
+					&.#{sl-prefix('breakpoint') + $breakpoint-name + '-' + $i} {
 						-moz-column-count: $i;
 						-webkit-column-count: $i;
 						column-count: $i;
