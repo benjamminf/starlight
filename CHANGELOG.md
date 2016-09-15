@@ -1,5 +1,10 @@
 # Changelog
 
+#### v0.3.3
+- `Improved` Field mixin can now be used on any element type
+- `Fixed` Fixed bug with text column breakpoints producing invalid CSS and not working
+- `Fixed` Text no longer vertically clips in select elements that use the field mixin
+
 #### v0.3.2
 - `Fixed` Fixed box sizing for certain input types (search)
 
