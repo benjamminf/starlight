@@ -31,17 +31,14 @@
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-
-	@include sl-extend-tags(input, select) {
-
-		@include sl-textbox(
-			$font-size,
-			$padding,
-			$border-width,
-			$line-height,
-			false
-		);
-	}
+	
+	@include sl-textbox(
+		$font-size,
+		$padding,
+		$border-width,
+		$line-height,
+		false
+	);
 
 	@include sl-extend-tags(input) {
 		line-height: normal;
