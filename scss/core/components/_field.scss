@@ -61,7 +61,7 @@
 			$t-padding: 0;
 		}
 
-		line-height: sl-sum($min-v-padding * 2, $line-height);
+		line-height: sl-sum($min-v-padding * 2, 1em);
 		padding: $t-padding $r-padding $b-padding $l-padding;
 	}
 
