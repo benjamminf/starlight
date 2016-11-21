@@ -46,6 +46,7 @@
 	@extend %sl-float-label !optional;
 
 	position: relative;
+	overflow: hidden;
 
 	$t-padding: sl-shorthand($padding, top);
 	$b-padding: sl-shorthand($padding, bottom);
@@ -123,11 +124,9 @@
 		top: $label-top;
 		left: $label-left;
 		right: $label-right;
-		overflow: hidden;
 		font-size: $label-font-size;
 		line-height: 1 !important;
 		white-space: nowrap;
-		text-overflow: ellipsis;
 		transform-origin: left center;
 	}
 
@@ -141,11 +140,9 @@
 			left: $s-label-left;
 			right: $s-label-right;
 			display: block;
-			overflow: hidden;
 			font-size: $small-label-font-size;
 			line-height: 1 !important;
 			white-space: nowrap;
-			text-overflow: ellipsis;
 			opacity: 0;
 			transform-origin: left center;
 		}
