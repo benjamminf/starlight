@@ -1,5 +1,9 @@
 # Changelog
 
+#### v0.3.4
+- `Fixed` Text no longer vertically clips on select fields
+- `Fixed` Label text no longer vertically clips on float label fields
+
 #### v0.3.3
 - `Improved` Field mixin can now be used on any element type
 - `Fixed` Fixed bug with text column breakpoints producing invalid CSS and not working
