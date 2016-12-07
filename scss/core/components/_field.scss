@@ -68,6 +68,7 @@
 	@include sl-extend-tags(textarea) {
 		overflow: auto;
 		white-space: normal;
+		height: auto;
 
 		@include sl-textbox(
 			$font-size,
