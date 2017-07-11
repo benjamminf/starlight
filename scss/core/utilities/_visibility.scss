@@ -45,7 +45,7 @@ $sl-generate-visibility: $sl-generate !default;
 		visibility: hidden !important;
 	}
 
-	@include sl-utility('invisible') {
+	@include sl-utility('hidden', 'invisible') {
 		position: absolute !important;
 		overflow: hidden !important;
 		width: 1px !important;
@@ -54,14 +54,10 @@ $sl-generate-visibility: $sl-generate !default;
 		padding: 0 !important;
 		border: 0 !important;
 		clip: rect(0 0 0 0) !important;
+		pointer-events: none !important;
 	}
 
 	@include sl-utility('transparent') {
-		visibility: hidden !important;
-	}
-
-	@include sl-utility('hidden') {
-		display: none !important;
 		visibility: hidden !important;
 	}
 
@@ -72,6 +68,15 @@ $sl-generate-visibility: $sl-generate !default;
 			@include sl-utility('hidden' + sl-prefix('breakpoint') + $breakpoint-name) {
 				display: none !important;
 				visibility: hidden !important;
+				position: absolute !important;
+				overflow: hidden !important;
+				width: 1px !important;
+				height: 1px !important;
+				margin: -1px !important;
+				padding: 0 !important;
+				border: 0 !important;
+				clip: rect(0 0 0 0) !important;
+				pointer-events: none !important;
 			}
 		}
 	}
