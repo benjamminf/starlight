@@ -1,5 +1,13 @@
 # Changelog
 
+#### v0.3.6
+- `Fixed` Fixed issue with field component input fields clipping vertically in some browsers
+
+#### v0.3.5
+- `Improved` Hidden utility classes are now more robust
+- `Fixed` Fixed issue with field component textarea's not wrapping text
+- `Fixed` Fixed issue with field component textarea's heights not being respected
+
 #### v0.3.4
 - `Fixed` Text no longer vertically clips on select fields
 - `Fixed` Label text no longer vertically clips on float label fields
