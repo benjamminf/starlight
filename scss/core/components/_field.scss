@@ -44,8 +44,8 @@
 		line-height: normal;
 	}
 	
-	// Ensures text doesn't get vertically clipped in select tags
-	@include sl-extend-tags(select) {
+	// Ensures text doesn't get vertically clipped in input and select tags
+	@include sl-extend-tags(input, select) {
 		$t-padding: sl-shorthand($padding, 'top');
 		$b-padding: sl-shorthand($padding, 'bottom');
 		$l-padding: sl-shorthand($padding, 'left');
