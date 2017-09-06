@@ -79,7 +79,7 @@
 	$label-top: sl-sum(
 		sl-convert($rf-t-padding, unit($t-padding), $label-font-size),
 		sl-convert($rf-t-border-width, unit($t-border-width), $label-font-size),
-		sl-refactor($font-size / 2, $label-font-size, $font-size),
+		sl-refactor($font-size / 2, $label-font-size),
 		sl-convert(-0.5em, unit($label-font-size), $label-font-size)
 	);
 	$label-left: sl-sum(
@@ -96,7 +96,7 @@
 	$s-label-top: sl-sum(
 		sl-convert($rf-t-padding, unit($t-padding), $small-label-font-size),
 		sl-convert($rf-t-border-width, unit($t-border-width), $label-font-size),
-		sl-refactor($font-size / 2, $small-label-font-size, $font-size),
+		sl-refactor($font-size / 2, $small-label-font-size),
 		sl-convert(-0.5em, unit($small-label-font-size), $small-label-font-size),
 		$label-shift
 	);
