@@ -1,5 +1,8 @@
 # Changelog
 
+#### v0.3.7
+- `Fixed` Fixed issue with float label label's not vertically positioning correctly if the fields font size differed from the global font size
+
 #### v0.3.6
 - `Fixed` Fixed issue with field component input fields clipping vertically in some browsers
 
