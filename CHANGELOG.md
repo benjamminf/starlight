@@ -1,5 +1,8 @@
 # Changelog
 
+#### v0.3.8
+- `Fixed` Structures now correctly support odd value (and single pixel) gaps
+
 #### v0.3.7
 - `Fixed` Fixed issue with float label label's not vertically positioning correctly if the fields font size differed from the global font size
 
