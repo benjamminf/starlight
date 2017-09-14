@@ -223,27 +223,29 @@ $sl-structure-child-selector: '*' !default;
 		$gutter-h: max($gutter-left, $gutter-right);
 		$gutter-v: max($gutter-top, $gutter-bottom);
 		$gutter-h-half: ($gutter-h / 2);
+		$gutter-h-half-l: ceil($gutter-h-half);
+		$gutter-h-half-r: floor($gutter-h-half);
 
 		@include sl-parameter('h-gap-' + $gutter-name) {
-			margin-left: -$gutter-h-half;
-			margin-right: -$gutter-h-half;
+			margin-left: -$gutter-h-half-l;
+			margin-right: -$gutter-h-half-r;
 
 			@include sl-parameter('h-outer-gap') {
 				margin-left: 0;
 				margin-right: 0;
-				padding-left: $gutter-h-half;
-				padding-right: $gutter-h-half;
+				padding-left: $gutter-h-half-l;
+				padding-right: $gutter-h-half-r;
 			}
 
 			> * {
 
 				@if $sl-structure-h-gap-property == border {
-					border-left: $gutter-h-half solid transparent;
-					border-right: $gutter-h-half solid transparent;
+					border-left: $gutter-h-half-l solid transparent;
+					border-right: $gutter-h-half-r solid transparent;
 					background-clip: padding-box; // Borders are used for gaps, so clip backgrounds at paddings
 
 				} @else if $sl-structure-h-gap-property == padding {
-					padding: 0 $gutter-h-half;
+					padding: 0 $gutter-h-half-r 0 $gutter-h-half-l;
 				}
 			}
 		}
