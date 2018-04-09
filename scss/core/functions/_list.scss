@@ -34,11 +34,11 @@
 
 	} @else if $key == left or $key == bottomleft {
 
-		@if $length >= 2 {
-			$index: 2;
-
-		} @else if $length >= 4 {
+		@if $length >= 4 {
 			$index: 4;
+
+		} @else if $length >= 2 {
+			$index: 2;
 		}
 
 	} @else if $key != top and $key != topleft {
