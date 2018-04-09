@@ -1,5 +1,8 @@
 # Changelog
 
+#### v0.3.9
+- `Fixed` Fixed bug where shorthand left function was getting the right value on long lists
+
 #### v0.3.8
 - `Fixed` Structures now correctly support odd value (and single pixel) gaps
 
